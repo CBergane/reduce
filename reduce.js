@@ -81,20 +81,8 @@ let students = [
   }
 ];
 
-const biggest = students.reduce((max, curr) => {
-  if(curr.results.english > max) {
-    max = curr.results.english;
-  } return max
-}, 0);
-
-
+const biggest = students.reduce((acc, curr) => {
+  acc = acc.max > curr.results.english ? acc: {name:curr.name, max:curr.results.english};
+  return acc;
+}, {})
 console.log(biggest);
-// const biggest = students.reduce((acc, curr) => {
-//   if (curr.results.english > acc.max) {
-//     let { name, results } = curr;
-//     acc.name = name;
-//     acc.max = results.english;
-//   }
-//   return acc;
-// },{ name: "", max: 0 });
-// console.log(biggest);
